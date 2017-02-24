@@ -122,6 +122,27 @@ return array(
 
 
         /**
+         *    getCustomerMetafields() method
+         *
+         *    reference: http://docs.shopify.com/api/metafield
+         */
+        "getCustomerMetafields" => array(
+            "httpMethod" => "GET",
+            "uri" => "/admin/customers/{id}/metafields.json",
+            "summary" => "Get metafields that belong to a customer",
+            "responseModel" => "defaultJsonResponse",
+            "parameters" => array(
+                "id" => array(
+                    "type" => "string",
+                    "location" => "uri",
+                    "description" => "The ID of the Customer.",
+                    "required" => true
+                )
+            )
+        ),
+
+
+        /**
          *    getMetafieldsCount() method
          *
          *    reference: http://docs.shopify.com/api/metafield
@@ -225,7 +246,34 @@ return array(
 
 
         /**
-         *    getProductMetafield() method
+         *    getCustomerMetafield() method
+         *
+         *    reference: http://docs.shopify.com/api/metafield
+         */
+        "getCustomerMetafield" => array(
+            "httpMethod" => "GET",
+            "uri" => "/admin/customers/{id}/metafields/{metafield_id}.json",
+            "summary" => "Get a single customer metafield by its ID",
+            "responseModel" => "defaultJsonResponse",
+            "parameters" => array(
+                "id" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Customer.",
+                    "required" => true
+                ),
+                "metafield_id" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Metafield.",
+                    "required" => true
+                )
+            )
+        ),
+
+
+        /**
+         *    getProductVariantMetafield() method
          *
          *    reference: http://docs.shopify.com/api/metafield
          */
@@ -472,6 +520,53 @@ return array(
 
 
         /**
+         *    updateCustomerMetafield() method
+         *
+         *    reference: http://docs.shopify.com/api/metafield
+         */
+        "updateCustomerMetafield" => array(
+            "httpMethod" => "PUT",
+            "uri" => "/admin/customer/{id}/metafields/{metafield_id}.json",
+            "summary" => "Update a Customer Metafield",
+            "responseModel" => "defaultJsonResponse",
+            "parameters" => array(
+                "id" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Customer.",
+                    "required" => true
+                ),
+                "metafield_id" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Metafield.",
+                    "required" => true
+                ),
+                "metafield" => array(
+                    "location" => "json",
+                    "parameters" => array(
+                        "metafieldId" => array(
+                            "type" => "number",
+                            "location" => "json",
+                            "description" => "The ID for the Metafield."
+                        ),
+                        "value" => array(
+                            "type" => "string",
+                            "location" => "json",
+                            "description" => "The Value of the Metafield."
+                        ),
+                        "value_type" => array(
+                            "type" => "string",
+                            "location" => "json",
+                            "description" => "The Value Type of the Metafield."
+                        )
+                    )
+                )
+            )
+        ),
+
+
+        /**
          *    updateProductVariantMetafield() method
          *
          *    reference: http://docs.shopify.com/api/metafield
@@ -554,6 +649,33 @@ return array(
                     "type" => "number",
                     "location" => "uri",
                     "description" => "The ID of the Product.",
+                    "required" => true
+                ),
+                "metafieldId" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Metafield.",
+                    "required" => true
+                )
+            )
+        ),
+
+
+        /**
+         *    deleteCustomerMetafield() method
+         *
+         *    reference: http://docs.shopify.com/api/metafield
+         */
+        "deleteCustomerMetafield" => array(
+            "httpMethod" => "DELETE",
+            "uri" => "/admin/customers/{id}/metafields/{metafieldId}.json",
+            "summary" => "Delete a Customer Metafield",
+            "responseModel" => "defaultJsonResponse",
+            "parameters" => array(
+                "id" => array(
+                    "type" => "number",
+                    "location" => "uri",
+                    "description" => "The ID of the Customer.",
                     "required" => true
                 ),
                 "metafieldId" => array(
